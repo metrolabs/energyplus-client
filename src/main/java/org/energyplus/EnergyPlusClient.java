@@ -50,14 +50,6 @@ public class EnergyPlusClient {
             LocalDateTime startOfYear = LocalDateTime.of(LocalDateTime.now().getYear(), 1, 1, 0, 0);
             while((record = reader.readNext()) != null){
                 if(row == 0){
-                    System.out.println("Location: " + record[1]);
-                    System.out.println("State: " + record[2]);
-                    System.out.println("Type: " + record[4]);
-                    System.out.println("setStation: " + record[5]);
-                    System.out.println("setLatitude: " + record[6]);
-                    System.out.println("setLongitude: " + record[7]);
-                    System.out.println("setTimeZone: " + record[8]);
-
                     weatherData.setStation(record[5]);
                     weatherData.setLatitude(Double.parseDouble(record[6]));
                     weatherData.setLongitude(Double.parseDouble(record[7]));
