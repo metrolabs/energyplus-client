@@ -20,11 +20,15 @@
 
 package org.energyplus;
 
+import java.time.LocalDateTime;
+
 public class WeatherRawData {
 
-	public int hour;
-    public int hourOfYear;
+	public LocalDateTime dateTime;
 	public int month;
+	public int day;
+    public int hour;
+    public int hourOfYear;
 	
 	public double dryBulb;
 	public double gloHorzRad;
@@ -62,6 +66,24 @@ public class WeatherRawData {
 
 	public WeatherRawData() {		
 	}
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public WeatherRawData setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+        return this;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public WeatherRawData setDay(int day) {
+        this.day = day;
+        return this;
+    }
 
     public int getHour() {
         return hour;

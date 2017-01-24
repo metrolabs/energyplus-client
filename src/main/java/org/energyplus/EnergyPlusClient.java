@@ -44,9 +44,10 @@ public class EnergyPlusClient {
         EnergyPlusWeatherData energyPlusWeatherData;
 
         try {
-            CSVReader reader = new CSVReader(new StringReader(payload));
             String[] record;
             int row = 0, hourOfYear = 0;
+            CSVReader reader = new CSVReader(new StringReader(payload));
+            LocalDateTime startOfYear = LocalDateTime.of(LocalDateTime.now().getYear(), 1, 1, 0, 0);
             while((record = reader.readNext()) != null){
                 if(row == 0){
                     System.out.println("Location: " + record[1]);
@@ -73,9 +74,11 @@ public class EnergyPlusClient {
 
                 energyPlusWeatherData = EnergyPlusWeatherData.parse(record);
                 weatherHourly = new WeatherRawData();
-                weatherHourly.setMonth(energyPlusWeatherData.getMonth());
-                weatherHourly.setHour(energyPlusWeatherData.getHour());
-                weatherHourly.setHourOfYear(Constants.getHourOfYear(hourOfYear));
+                weatherHourly.setMonth(startOfYear.plusHours(hourOfYear).getMonthValue());
+                weatherHourly.setDay(startOfYear.plusHours(hourOfYear).getDayOfMonth());
+                weatherHourly.setHour(startOfYear.plusHours(hourOfYear).getHour());
+                weatherHourly.setDateTime(startOfYear.plusHours(hourOfYear));
+                weatherHourly.setHourOfYear(hourOfYear);
                 weatherHourly.setDryBulb(energyPlusWeatherData.getDryBulbTemperature());
                 weatherHourly.setGloHorzRad(energyPlusWeatherData.getGlobalHorizontalRadiation());
                 weatherHourly.setDirNormRad(energyPlusWeatherData.getDirectNormalRadiation());
@@ -83,15 +86,15 @@ public class EnergyPlusClient {
                 weatherHourly.setWindSpd(energyPlusWeatherData.getWindSpeed());
                 weatherHourly.setAtmosphericPressure(energyPlusWeatherData.getAtmosphericStationPressure());
 
-                weatherHourly.setSolarRadS(Constants.calcSolarRad(weatherData, weatherHourly, 0, row - 1));
-                weatherHourly.setSolarRadSE(Constants.calcSolarRad(weatherData, weatherHourly, -45, row - 1));
-                weatherHourly.setSolarRadE(Constants.calcSolarRad(weatherData, weatherHourly, -90, row - 1));
-                weatherHourly.setSolarRadNE(Constants.calcSolarRad(weatherData, weatherHourly, -135, row - 1));
-                weatherHourly.setSolarRadN(Constants.calcSolarRad(weatherData, weatherHourly, 180, row - 1));
-                weatherHourly.setSolarRadNW(Constants.calcSolarRad(weatherData, weatherHourly, 135, row - 1));
-                weatherHourly.setSolarRadW(Constants.calcSolarRad(weatherData, weatherHourly, 90, row - 1));
-                weatherHourly.setSolarRadSW(Constants.calcSolarRad(weatherData, weatherHourly, 45, row - 1));
-                weatherHourly.setSolarAltitude(Constants.calcSolarAltitude(weatherData, row - 1));
+                weatherHourly.setSolarRadS(Constants.calcSolarRad(weatherData, weatherHourly, 0, hourOfYear));
+                weatherHourly.setSolarRadSE(Constants.calcSolarRad(weatherData, weatherHourly, -45, hourOfYear));
+                weatherHourly.setSolarRadE(Constants.calcSolarRad(weatherData, weatherHourly, -90, hourOfYear));
+                weatherHourly.setSolarRadNE(Constants.calcSolarRad(weatherData, weatherHourly, -135, hourOfYear));
+                weatherHourly.setSolarRadN(Constants.calcSolarRad(weatherData, weatherHourly, 180, hourOfYear));
+                weatherHourly.setSolarRadNW(Constants.calcSolarRad(weatherData, weatherHourly, 135, hourOfYear));
+                weatherHourly.setSolarRadW(Constants.calcSolarRad(weatherData, weatherHourly, 90, hourOfYear));
+                weatherHourly.setSolarRadSW(Constants.calcSolarRad(weatherData, weatherHourly, 45, hourOfYear));
+                weatherHourly.setSolarAltitude(Constants.calcSolarAltitude(weatherData, hourOfYear));
 
                 weatherData.weatherRawData.add(weatherHourly);
                 hourOfYear++;
