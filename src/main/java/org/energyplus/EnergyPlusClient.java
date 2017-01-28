@@ -29,8 +29,10 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Date;
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -69,7 +71,7 @@ public class EnergyPlusClient {
                 weatherHourly.setMonth(startOfYear.plusHours(hourOfYear).getMonthValue());
                 weatherHourly.setDay(startOfYear.plusHours(hourOfYear).getDayOfMonth());
                 weatherHourly.setHour(startOfYear.plusHours(hourOfYear).getHour());
-                weatherHourly.setDateTime(startOfYear.plusHours(hourOfYear));
+                weatherHourly.setDateTime(Date.from(startOfYear.plusHours(hourOfYear).toInstant(ZoneOffset.UTC)));
                 weatherHourly.setHourOfYear(hourOfYear);
                 weatherHourly.setDryBulb(energyPlusWeatherData.getDryBulbTemperature());
                 weatherHourly.setGloHorzRad(energyPlusWeatherData.getGlobalHorizontalRadiation());
