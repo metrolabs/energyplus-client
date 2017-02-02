@@ -240,7 +240,8 @@ public class EnergyPlusClient {
         }
 
         public static int getHourOfYear(int hour) {
-            return date.plusHours(hour).getDayOfYear()*24;
+//            return date.plusHours(hour).getDayOfYear()*24;
+            return hour;
         }
     }
 }
