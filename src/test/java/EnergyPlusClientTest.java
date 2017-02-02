@@ -38,7 +38,7 @@ public class EnergyPlusClientTest {
         String url = "https://energyplus.net/weather-download/asia_wmo_region_2/IND//IND_Kota.424520_ISHRAE/IND_Kota.424520_ISHRAE.epw";
         WeatherData weatherData = EnergyPlusClient.toWeatherDataFromLink(url);
 
-        System.out.println(new Gson().toJson(weatherData.weatherRawData.get(1700)));
+        System.out.println(new Gson().toJson(weatherData.weatherRawData.get(8759)));
 
         assertEquals(EnergyPlusClient.toWeatherDataFromLink(url).weatherRawData.size(), 8760);
     }
