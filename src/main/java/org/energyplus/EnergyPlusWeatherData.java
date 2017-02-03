@@ -566,41 +566,76 @@ public class EnergyPlusWeatherData {
     }
 
     public static EnergyPlusWeatherData parse(String[] o) {
-        int index = 0;
         return new EnergyPlusWeatherData()
-                .setYear(Integer.parseInt(o[index++]))
-                .setMonth(Integer.parseInt(o[index++]))
-                .setDay(Integer.parseInt(o[index++]))
-                .setHour(Integer.parseInt(o[index++])-1)
-                .setMinute(Math.max(0,Integer.parseInt(o[index++])-1))
-                .setDataSource(o[index++])
-                .setDryBulbTemperature(Double.parseDouble(o[index++]))
-                .setDewPointTemperature(Double.parseDouble(o[index++]))
-                .setRelativeHumidity(Double.parseDouble(o[index++]))
-                .setAtmosphericStationPressure(Double.parseDouble(o[index++]))
-                .setExtraterrestrialHorizontalRadiation(Double.parseDouble(o[index++]))
-                .setExtraterrestrialDirectNormalRadiation(Double.parseDouble(o[index++]))
-                .setHorizontalInfraredRadiationIntensity(Double.parseDouble(o[index++]))
-                .setGlobalHorizontalRadiation(Double.parseDouble(o[index++]))
-                .setDirectNormalRadiation(Double.parseDouble(o[index++]))
-                .setDiffuseHorizontalRadiation(Double.parseDouble(o[index++]))
-                .setGlobalHorizontalIlluminance(Double.parseDouble(o[index++]))
-                .setDiffuseHorizontalIlluminance(Double.parseDouble(o[index++]))
-                .setZenithLuminance(Double.parseDouble(o[index++]))
-                .setWindDirection(Double.parseDouble(o[index++]))
-                .setWindSpeed(Double.parseDouble(o[index++]))
-                .setTotalSkyCover(Double.parseDouble(o[index++]))
-                .setOpaqueSkyCover(Double.parseDouble(o[index++]))
-                .setVisibility(Double.parseDouble(o[index++]))
-                .setCeilingHeight(Double.parseDouble(o[index++]))
-                .setPresentWeatherObservation(o[index++])
-                .setPresentWeatherCodes(o[index++])
-                .setPrecipitableWater(Double.parseDouble(o[index++]))
-                .setAerosolOpticalDepth(Double.parseDouble(o[index++]))
-                .setSnowDepth(Double.parseDouble(o[index++]))
-                .setDaysSinceLastSnowfall(Double.parseDouble(o[index++]))
-                .setAlbedo(Double.parseDouble(o[index++]))
-                .setLiquidPrecipitationDepth(Double.parseDouble(o[index++]))
-                .setLiquidPrecipitationQuantity(Double.parseDouble(o[index++]));
+                .setYear(Integer.parseInt(o[YEAR]))
+                .setMonth(Integer.parseInt(o[MONTH]))
+                .setDay(Integer.parseInt(o[DAY]))
+                .setHour(Integer.parseInt(o[HOUR]))
+                .setMinute(Integer.parseInt(o[MINUTE]))
+                .setDataSource(o[DATA_SOURCE_AND_UNCERTAINTY_FLAGS])
+                .setDryBulbTemperature(Double.parseDouble(o[DRY_BULB_TEMPERATURE]))
+                .setDewPointTemperature(Double.parseDouble(o[DEW_POINT_TEMPERATURE]))
+                .setRelativeHumidity(Double.parseDouble(o[RELATIVE_HUMIDITY]))
+                .setAtmosphericStationPressure(Double.parseDouble(o[ATMOSPHERIC_STATION_PRESSURE]))
+                .setExtraterrestrialHorizontalRadiation(Double.parseDouble(o[EXTRATERRESTRIAL_HORIZONTAL_RADIATION]))
+                .setExtraterrestrialDirectNormalRadiation(Double.parseDouble(o[EXTRATERRESTRIAL_DIRECT_NORMAL_RADIATION]))
+                .setHorizontalInfraredRadiationIntensity(Double.parseDouble(o[HORIZONTAL_INFRARED_RADIATION_INTENSITY]))
+                .setGlobalHorizontalRadiation(Double.parseDouble(o[GLOBAL_HORIZONTAL_RADIATION]))
+                .setDirectNormalRadiation(Double.parseDouble(o[DIRECT_NORMAL_RADIATION]))
+                .setDiffuseHorizontalRadiation(Double.parseDouble(o[DIFFUSE_HORIZONTAL_RADIATION]))
+                .setGlobalHorizontalIlluminance(Double.parseDouble(o[GLOBAL_HORIZONTAL_ILLUMINANCE]))
+                .setDiffuseHorizontalIlluminance(Double.parseDouble(o[DIFFUSE_HORIZONTAL_ILLUMINANCE]))
+                .setZenithLuminance(Double.parseDouble(o[ZENITH_LUMINANCE]))
+                .setWindDirection(Double.parseDouble(o[WIND_DIRECTION]))
+                .setWindSpeed(Double.parseDouble(o[WIND_SPEED]))
+                .setTotalSkyCover(Double.parseDouble(o[TOTAL_SKY_COVER]))
+                .setOpaqueSkyCover(Double.parseDouble(o[OPAQUE_SKY_COVER]))
+                .setVisibility(Double.parseDouble(o[VISIBILITY]))
+                .setCeilingHeight(Double.parseDouble(o[CEILING_HEIGH]))
+                .setPresentWeatherObservation(o[PRESENT_WEATHER_OBSERVATION])
+                .setPresentWeatherCodes(o[PRESENT_WEATHER_CODES])
+                .setPrecipitableWater(Double.parseDouble(o[PRECIPITABLE_WATER]))
+                .setAerosolOpticalDepth(Double.parseDouble(o[AEROSOL_OPTICAL_DEPTH]))
+                .setSnowDepth(Double.parseDouble(o[SNOW_DEPTH]))
+                .setDaysSinceLastSnowfall(Double.parseDouble(o[DAYS_SINCE_LAST_SNOWFALL]))
+                .setAlbedo(Double.parseDouble(o[ALBEDO]))
+                .setLiquidPrecipitationDepth(Double.parseDouble(o[LIQUID_PRECIPITATION_DEPTH]))
+                .setLiquidPrecipitationQuantity(Double.parseDouble(o[LIQUID_PRECIPITATION_QUANTITY]));
     }
+
+    public final static int YEAR = 0;
+    public final static int MONTH = 1;
+    public final static int DAY = 2;
+    public final static int HOUR = 3;
+    public final static int MINUTE = 4;
+    public final static int DATA_SOURCE_AND_UNCERTAINTY_FLAGS = 5;
+    public final static int DRY_BULB_TEMPERATURE = 6;
+    public final static int DEW_POINT_TEMPERATURE = 7;
+    public final static int RELATIVE_HUMIDITY = 8;
+    public final static int ATMOSPHERIC_STATION_PRESSURE = 9;
+    public final static int EXTRATERRESTRIAL_HORIZONTAL_RADIATION = 10;
+    public final static int EXTRATERRESTRIAL_DIRECT_NORMAL_RADIATION = 11;
+    public final static int HORIZONTAL_INFRARED_RADIATION_INTENSITY = 12;
+    public final static int GLOBAL_HORIZONTAL_RADIATION = 13;
+    public final static int DIRECT_NORMAL_RADIATION = 14;
+    public final static int DIFFUSE_HORIZONTAL_RADIATION = 15;
+    public final static int GLOBAL_HORIZONTAL_ILLUMINANCE = 16;
+    public final static int DIRECT_NORMAL_ILLUMINANCE = 17;
+    public final static int DIFFUSE_HORIZONTAL_ILLUMINANCE = 18;
+    public final static int ZENITH_LUMINANCE = 19;
+    public final static int WIND_DIRECTION = 20;
+    public final static int WIND_SPEED = 21;
+    public final static int TOTAL_SKY_COVER = 22;
+    public final static int OPAQUE_SKY_COVER = 23;
+    public final static int VISIBILITY = 24;
+    public final static int CEILING_HEIGH = 25;
+    public final static int PRESENT_WEATHER_OBSERVATION = 26;
+    public final static int PRESENT_WEATHER_CODES = 27;
+    public final static int PRECIPITABLE_WATER = 28;
+    public final static int AEROSOL_OPTICAL_DEPTH = 29;
+    public final static int SNOW_DEPTH = 30;
+    public final static int DAYS_SINCE_LAST_SNOWFALL = 31;
+    public final static int ALBEDO = 32;
+    public final static int LIQUID_PRECIPITATION_DEPTH = 33;
+    public final static int LIQUID_PRECIPITATION_QUANTITY = 34;
 }

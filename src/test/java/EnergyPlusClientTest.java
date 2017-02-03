@@ -34,12 +34,12 @@ public class EnergyPlusClientTest {
     @Test
     public void noop(){}
 
-    //@Test
+    @Test
     public void downloadAndUnzip() {
         System.setProperty("user.timezone", "UTC");
         TimeZone.setDefault(null);
 
-        String url = "https://energyplus.net/weather-download/asia_wmo_region_2/IND//IND_Kota.424520_ISHRAE/IND_Kota.424520_ISHRAE.epw";
+        String url = "https://energyplus.net/weather-download/north_and_central_america_wmo_region_4/USA/NM/USA_NM_Albuquerque.Intl.AP.723650_TMY3/USA_NM_Albuquerque.Intl.AP.723650_TMY3.epw";
         WeatherData weatherData = EnergyPlusClient.toWeatherDataFromLink(url);
 
         System.out.println(new Gson().toJson(weatherData.weatherRawData.get(0)));

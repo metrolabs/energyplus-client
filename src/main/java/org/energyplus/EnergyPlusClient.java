@@ -68,9 +68,9 @@ public class EnergyPlusClient {
 
                 energyPlusWeatherData = EnergyPlusWeatherData.parse(record);
                 weatherHourly = new WeatherRawData();
-                weatherHourly.setMonth(startOfYear.plusHours(hourOfYear).getMonthValue());
-                weatherHourly.setDay(startOfYear.plusHours(hourOfYear).getDayOfMonth());
-                weatherHourly.setHour(startOfYear.plusHours(hourOfYear).getHour());
+                weatherHourly.setMonth(energyPlusWeatherData.getMonth());
+                weatherHourly.setDay(energyPlusWeatherData.getDay());
+                weatherHourly.setHour(energyPlusWeatherData.getHour());
                 weatherHourly.setDateTime(Date.from(startOfYear.plusHours(hourOfYear).toInstant(ZoneOffset.UTC)));
                 weatherHourly.setHourOfYear(hourOfYear);
                 weatherHourly.setDryBulb(energyPlusWeatherData.getDryBulbTemperature());
