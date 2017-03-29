@@ -42,10 +42,10 @@ public class EnergyPlusClientTest {
         String url = "https://energyplus.net/weather-download/north_and_central_america_wmo_region_4/USA/NM/USA_NM_Albuquerque.Intl.AP.723650_TMY3/USA_NM_Albuquerque.Intl.AP.723650_TMY3.epw";
         WeatherData weatherData = EnergyPlusClient.toWeatherDataFromLink(url);
 
-        System.out.println(new Gson().toJson(weatherData.weatherRawData.get(0)));
-        System.out.println(new Gson().toJson(weatherData.weatherRawData.get(HOURS_OF_MONTH_ACC[8]+12)));
-        System.out.println(new Gson().toJson(weatherData.weatherRawData.get(8759)));
+        System.out.println(new Gson().toJson(weatherData.getWeatherRawData().get(0)));
+        System.out.println(new Gson().toJson(weatherData.getWeatherRawData().get(HOURS_OF_MONTH_ACC[8]+12)));
+        System.out.println(new Gson().toJson(weatherData.getWeatherRawData().get(8759)));
 
-        assertEquals(EnergyPlusClient.toWeatherDataFromLink(url).weatherRawData.size(), 8760);
+        assertEquals(EnergyPlusClient.toWeatherDataFromLink(url).getWeatherRawData().size(), 8760);
     }
 }

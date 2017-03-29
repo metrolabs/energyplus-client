@@ -26,18 +26,23 @@ import java.util.List;
 public class WeatherData {
 	
 	private String station;
-	public double latitude;
-	public double longitude;
+    private double latitude;
+    private double longitude;
 	private double timeZone;
-	public double sigma;
+    private double sigma;
 
-	public List<WeatherRawData> weatherRawData     = new ArrayList<>(8760);
-	public List<WeatherRawData> weatherRawDataM    = new ArrayList<>(12);
+    private List<WeatherRawData> weatherRawData;
+    private List<WeatherRawData> weatherRawDataM;
 
-    public WeatherData() {}
+    public WeatherData() {
+        weatherRawData = new ArrayList<>(8760);
+        weatherRawDataM = new ArrayList<>(12);
+    }
 
-	public WeatherData(String station, double latitude, double longitude,
-                       double timeZone, double sigma) {
+	public WeatherData(String station, double latitude, double longitude, double timeZone, double sigma) {
+        weatherRawData = new ArrayList<>(8760);
+        weatherRawDataM = new ArrayList<>(12);
+
 		this.station = station;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -215,5 +220,23 @@ public class WeatherData {
 
     public void setSigma(double sigma) {
         this.sigma = sigma;
+    }
+
+    public List<WeatherRawData> getWeatherRawData() {
+        return weatherRawData;
+    }
+
+    public WeatherData addWeatherRawData(WeatherRawData w) {
+        weatherRawData.add(w);
+        return this;
+    }
+
+    public List<WeatherRawData> getWeatherRawDataM() {
+        return weatherRawDataM;
+    }
+
+    public WeatherData addWeatherRawDataM(WeatherRawData w) {
+        weatherRawDataM.add(w);
+        return this;
     }
 }

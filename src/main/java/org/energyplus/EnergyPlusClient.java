@@ -33,7 +33,6 @@ import java.sql.Date;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class EnergyPlusClient {
@@ -42,7 +41,6 @@ public class EnergyPlusClient {
     public static WeatherData toWeatherDataFromDelimitedString(String payload) {
         WeatherData weatherData  = new WeatherData();
         WeatherRawData weatherHourly;
-        weatherData.weatherRawData = new ArrayList<>();
         EnergyPlusWeatherData energyPlusWeatherData;
 
         try {
@@ -70,7 +68,7 @@ public class EnergyPlusClient {
                 weatherHourly = new WeatherRawData();
                 weatherHourly.setMonth(energyPlusWeatherData.getMonth());
                 weatherHourly.setDay(energyPlusWeatherData.getDay());
-                weatherHourly.setHour(energyPlusWeatherData.getHour());
+                weatherHourly.setHour(energyPlusWeatherData.getHour()-1);
                 weatherHourly.setDateTime(Date.from(startOfYear.plusHours(hourOfYear).toInstant(ZoneOffset.UTC)));
                 weatherHourly.setHourOfYear(hourOfYear);
                 weatherHourly.setDryBulb(energyPlusWeatherData.getDryBulbTemperature());
@@ -90,7 +88,7 @@ public class EnergyPlusClient {
                 weatherHourly.setSolarRadSW(Constants.calcSolarRad(weatherData, weatherHourly, 45, hourOfYear));
                 weatherHourly.setSolarAltitude(Constants.calcSolarAltitude(weatherData, hourOfYear));
 
-                weatherData.weatherRawData.add(weatherHourly);
+                weatherData.addWeatherRawData(weatherHourly);
                 hourOfYear++;
                 row++;
             }
