@@ -45,14 +45,14 @@
 
     <distributionManagement>
         <repository>
-            <id>aws-release</id>
-            <name>S3 Release Repository for ${project.artifactId}</name>
-            <url>s3://metro-maven/release</url>
+            <id>metro.central</id>
+            <name>ip-172-31-10-162-releases</name>
+            <url>http://ec2-174-129-71-214.compute-1.amazonaws.com/artifactory/metrolabs</url>
         </repository>
         <snapshotRepository>
-            <id>aws-snapshot</id>
-            <name>S3 Snapshot Repository for ${project.artifactId}</name>
-            <url>s3://metro-maven/snapshot</url>
+            <id>metro.snapshots</id>
+            <name>ip-172-31-10-162-snapshots</name>
+            <url>http://ec2-174-129-71-214.compute-1.amazonaws.com/artifactory/metrolabs</url>
         </snapshotRepository>
     </distributionManagement>
 
@@ -65,31 +65,6 @@
             </extension>
         </extensions>
     </build>
-
-    <repositories>
-        <repository>
-            <id>${project.artifactId}-release</id>
-            <name>S3 Release Repository for ${project.artifactId}</name>
-            <url>s3://metro-maven/release</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>${project.artifactId}-snapshot</id>
-            <name>S3 Snapshot Repository for ${project.artifactId}</name>
-            <url>s3://metro-maven/snapshot</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <reporting>
         <plugins>
@@ -108,9 +83,7 @@
         <name>Metro Labs LLC</name>
         <url>http://metrolabs.io/</url>
     </organization>
-
     <inceptionYear>2016</inceptionYear>
-
     <developers>
         <developer>
             <id>metro.io</id>
