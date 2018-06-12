@@ -39,6 +39,6 @@ public class EnergyPlusClientTest {
 
         String url = "https://energyplus.net/weather-download/north_and_central_america_wmo_region_4/USA/NM/USA_NM_Albuquerque.Intl.AP.723650_TMY3/USA_NM_Albuquerque.Intl.AP.723650_TMY3.epw";
         WeatherData weatherData = EnergyPlusClient.toWeatherDataFromLink(url);
-        assertEquals(EnergyPlusClient.toWeatherDataFromLink(url).getWeatherRawData().size(), 8760);
+        assertEquals(weatherData.getWeatherRawData().size(), 8760);
     }
 }
