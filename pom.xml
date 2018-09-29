@@ -43,24 +43,6 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>maven.pivotenergy.io</id>
-            <name>maven.pivotenergy.io</name>
-            <url>https://maven.pivotenergy.io/artifactory/metrolabs</url>
-        </repository>
-    </distributionManagement>
-
-    <build>
-        <extensions>
-            <extension>
-                <groupId>org.springframework.build</groupId>
-                <artifactId>aws-maven</artifactId>
-                <version>5.0.0.RELEASE</version>
-            </extension>
-        </extensions>
-    </build>
-
     <reporting>
         <plugins>
             <plugin>
