@@ -6,7 +6,7 @@
 
     <groupId>io.metro</groupId>
     <artifactId>energyplus-client</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <opencsv.version>3.8</opencsv.version>
