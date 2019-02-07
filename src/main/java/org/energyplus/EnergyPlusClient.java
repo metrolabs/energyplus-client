@@ -21,8 +21,6 @@
 package org.energyplus;
 
 import com.opencsv.CSVReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -36,7 +34,6 @@ import java.time.ZoneOffset;
 import java.util.stream.Collectors;
 
 public class EnergyPlusClient {
-    private static Logger LOG = LoggerFactory.getLogger(EnergyPlusClient.class);
 
     public static WeatherData toWeatherDataFromDelimitedString(String payload) {
         WeatherData weatherData  = new WeatherData();
@@ -115,7 +112,6 @@ public class EnergyPlusClient {
             }
         } catch (java.io.IOException e) {
             e.printStackTrace();
-            LOG.error("Exception requesting data from Energy Plus Weather Data: [{}]", link);
         }
 
         return null;
