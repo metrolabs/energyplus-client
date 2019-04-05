@@ -20,7 +20,9 @@
 
 package org.energyplus;
 
-public class EnergyPlusWeatherData {
+import java.io.Serializable;
+
+public class EnergyPlusWeatherData implements Serializable {
     private int year;
     private int month;
     private int day;

@@ -20,9 +20,10 @@
 
 package org.energyplus;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class WeatherRawData {
+public class WeatherRawData implements Serializable {
 
 	public Date dateTime;
 	public int month;

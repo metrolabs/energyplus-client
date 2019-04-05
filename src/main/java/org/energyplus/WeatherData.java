@@ -20,10 +20,11 @@
 
 package org.energyplus;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WeatherData {
+public class WeatherData implements Serializable {
 	
 	private String station;
     private double latitude;
